@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:axolotl_spawn_egg"
+    },
+    "title": "Absolotly!",
+    "description": "Spawn the Absolotl",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/obtain_ancient_debris",
+  "criteria": {
+    "nope": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

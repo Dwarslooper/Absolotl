@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:axolotl_spawn_egg"
+    },
+    "title": "That's it my friends",
+    "description": "Defeat the Absolotl",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "minecraft:nether/obtain_ancient_debris",
+  "criteria": {
+    "nope": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+scoreboard objectives add b.data dummy
+
+execute if entity @e[type=minecraft:axolotl,tag=b.spawned] run function abs:running
+execute as @e[type=minecraft:armor_stand,tag=b.dc] at @s unless entity @e[type=minecraft:axolotl,tag=b.spawned,distance=..40] unless score resetsys b.data matches 2.. run scoreboard players add resetsys b.data 1
+execute as @e[type=minecraft:armor_stand,tag=b.dc] at @s unless entity @e[type=minecraft:axolotl,tag=b.spawned,distance=..40] if score resetsys b.data matches 1 run function abs:reset
+
+execute as @e[type=minecraft:axolotl,tag=!b.spawned] at @s unless score gloabl_spawned b.data matches 1 if block ~ ~-1 ~ minecraft:dark_prismarine if block ~ ~-1 ~-1 minecraft:prismarine_wall if block ~ ~-1 ~1 minecraft:prismarine_wall if block ~1 ~-1 ~ minecraft:prismarine_wall if block ~-1 ~-1 ~ minecraft:prismarine_wall if block ~1 ~-1 ~1 minecraft:gold_block if block ~-1 ~-1 ~-1 minecraft:gold_block if block ~-1 ~-1 ~1 minecraft:gold_block if block ~1 ~-1 ~1 minecraft:gold_block if block ~ ~ ~1 minecraft:ancient_debris if block ~ ~ ~-1 minecraft:ancient_debris if block ~-1 ~ ~ minecraft:ancient_debris if block ~1 ~ ~ minecraft:ancient_debris if block ~1 ~ ~1 minecraft:bone_block if block ~-1 ~ ~-1 minecraft:bone_block if block ~-1 ~ ~1 minecraft:bone_block if block ~1 ~ ~-1 minecraft:bone_block if block ~ ~ ~ air run setblock ~ ~ ~ air
+execute as @e[type=minecraft:axolotl,tag=!b.spawned] at @s unless score gloabl_spawned b.data matches 1 if block ~ ~-1 ~ minecraft:dark_prismarine if block ~ ~-1 ~-1 minecraft:prismarine_wall if block ~ ~-1 ~1 minecraft:prismarine_wall if block ~1 ~-1 ~ minecraft:prismarine_wall if block ~-1 ~-1 ~ minecraft:prismarine_wall if block ~1 ~-1 ~1 minecraft:gold_block if block ~-1 ~-1 ~-1 minecraft:gold_block if block ~-1 ~-1 ~1 minecraft:gold_block if block ~1 ~-1 ~1 minecraft:gold_block if block ~ ~ ~1 minecraft:ancient_debris if block ~ ~ ~-1 minecraft:ancient_debris if block ~-1 ~ ~ minecraft:ancient_debris if block ~1 ~ ~ minecraft:ancient_debris if block ~1 ~ ~1 minecraft:bone_block if block ~-1 ~ ~-1 minecraft:bone_block if block ~-1 ~ ~1 minecraft:bone_block if block ~1 ~ ~-1 minecraft:bone_block if block ~ ~ ~ air run summon axolotl ~ ~ ~ {Passengers:[{id:"minecraft:husk",Silent:1b,Invulnerable:1b,IsBaby:1b,Tags:["b.attacker"],ActiveEffects:[{Id:14,Amplifier:255b,Duration:999999}]}],Tags:["b.spawning"]}
+execute as @e[type=minecraft:axolotl,tag=!b.spawning,tag=!b.spawned] at @s unless score gloabl_spawned b.data matches 1 if block ~ ~-1 ~ minecraft:dark_prismarine if block ~ ~-1 ~-1 minecraft:prismarine_wall if block ~ ~-1 ~1 minecraft:prismarine_wall if block ~1 ~-1 ~ minecraft:prismarine_wall if block ~-1 ~-1 ~ minecraft:prismarine_wall if block ~1 ~-1 ~1 minecraft:gold_block if block ~-1 ~-1 ~-1 minecraft:gold_block if block ~-1 ~-1 ~1 minecraft:gold_block if block ~1 ~-1 ~1 minecraft:gold_block if block ~ ~ ~1 minecraft:ancient_debris if block ~ ~ ~-1 minecraft:ancient_debris if block ~-1 ~ ~ minecraft:ancient_debris if block ~1 ~ ~ minecraft:ancient_debris if block ~1 ~ ~1 minecraft:bone_block if block ~-1 ~ ~-1 minecraft:bone_block if block ~-1 ~ ~1 minecraft:bone_block if block ~1 ~ ~-1 minecraft:bone_block if block ~ ~ ~ air run kill @s
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run scoreboard players set global_spawned b.data 1
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run attribute @s minecraft:generic.knockback_resistance base set 100
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run attribute @s minecraft:generic.max_health base set 400
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run bossbar add b.health {"text":"Absolotl","color":"red"}
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run bossbar set b.health color pink
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run bossbar set b.health max 400
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run bossbar set b.health players @a[distance=..20]
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run bossbar set b.health visible true
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run bossbar set b.health style progress
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run effect give @s minecraft:fire_resistance 999999 255 true
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run effect give @s minecraft:resistance 4 100 true
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run data merge entity @s {Health:400}
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run summon minecraft:lightning_bolt
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run fill ~-1 ~-1 ~-1 ~1 ~ ~1 air
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run advancement grant @a[distance=..10] only abs:absolotly
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run tag @s add b.spawned
+execute as @e[type=minecraft:axolotl,tag=b.spawning] at @s run tag @s remove b.spawning
