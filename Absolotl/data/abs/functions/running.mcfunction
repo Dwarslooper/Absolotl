@@ -6,6 +6,8 @@ execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s store result bossbar b
 execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run data merge entity @s {Air:6000}
 execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s unless entity @e[tag=b.dc,distance=..200] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Small:1b,NoBasePlate:1b,NoGravity:1b,Silent:1b,Tags:["b.dc"]}
 execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run fill ~10 ~10 ~10 ~-10 ~-10 ~-10 air replace water
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run fill ~10 ~10 ~10 ~-10 ~-10 ~-10 air replace cave_air
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run fill ~10 ~10 ~10 ~-10 ~-10 ~-10 air replace lava
 execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s if score attack_cooldown b.data matches 1.. run scoreboard players add attack_cooldown b.data 1
 execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s if score attack_cooldown b.data matches 400.. run scoreboard players set exec_attack b.data 1
 execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s if score attack_cooldown b.data matches 400.. run scoreboard players set attack_cooldown b.data 1
@@ -14,6 +16,7 @@ execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s unless block ~ ~ ~-1 a
 execute if score trapped b.data matches 1 run scoreboard players add trfree b.data 1
 execute unless score trapped b.data matches 1 unless score trfree b.data matches ..0 run scoreboard players remove trfree b.data 1
 execute if score trfree b.data matches 200 run execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run fill ~-1 ~ ~-1 ~1 ~ ~1 air destroy
+execute if score trfree b.data matches 200 run execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run advancement grant @p only abs:trap_absolotl
 execute if score trfree b.data matches 200 run execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run playsound minecraft:entity.wither.break_block master @a[distance=..20] ~ ~ ~ 1 0
 execute if score trfree b.data matches 200 run scoreboard players reset trfree b.data
 execute if score exec_attack b.data matches 1 run summon minecraft:area_effect_cloud ~ ~ ~ {Tags:["b.attack_selector","b.attack_1"],Duration:20}
@@ -39,3 +42,23 @@ execute as @e[type=minecraft:armor_stand,tag=b.a3.spawner] at @s run kill @s
 execute as @e[tag=b.rf.particle] at @s run particle minecraft:smoke ~ ~1 ~ 0.4 1 0.4 0.01 400 normal
 execute as @e[type=minecraft:armor_stand,tag=b.a2.spawner] at @s run function abs:magic
 execute as @e[type=minecraft:armor_stand,tag=b.a1.spawner] at @s run execute as @a[distance=..8] at @s run summon minecraft:fireball ~ ~-1 ~ {power:[0.0,-1.0,0.0],ExplosionPower:2}
+
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:0b}]}] hotbar.0 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:1b}]}] hotbar.1 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:2b}]}] hotbar.2 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:3b}]}] hotbar.3 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:4b}]}] hotbar.4 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:5b}]}] hotbar.5 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:6b}]}] hotbar.6 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:7b}]}] hotbar.7 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:water_bucket",Slot:8b}]}] hotbar.8 with minecraft:bucket
+
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:0b}]}] hotbar.0 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:1b}]}] hotbar.1 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:2b}]}] hotbar.2 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:3b}]}] hotbar.3 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:4b}]}] hotbar.4 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:5b}]}] hotbar.5 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:6b}]}] hotbar.6 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:7b}]}] hotbar.7 with minecraft:bucket
+execute as @e[type=minecraft:axolotl,tag=b.spawned] at @s run item replace @a[distance=..8,nbt={Inventory:[{id:"minecraft:lava_bucket",Slot:8b}]}] hotbar.8 with minecraft:bucket

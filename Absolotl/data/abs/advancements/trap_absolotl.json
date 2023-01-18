@@ -1,10 +1,10 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:trident"
+      "item": "minecraft:iron_bars"
     },
-    "title": "That's it my friends",
-    "description": "Defeat the Absolotl",
+    "title": "Not with me",
+    "description": "Trap the Absolotl and look at it breaking free",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
