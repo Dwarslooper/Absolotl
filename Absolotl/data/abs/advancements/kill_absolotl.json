@@ -10,7 +10,7 @@
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "minecraft:nether/obtain_ancient_debris",
+  "parent": "abs:absolotly",
   "criteria": {
     "nope": {
       "trigger": "minecraft:impossible"
